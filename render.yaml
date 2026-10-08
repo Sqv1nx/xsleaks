@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: xsleaks-showcase
+    runtime: docker
+    dockerfilePath: ./showcase/Dockerfile
+    envVars:
+      - key: SECRET
+        sync: false
+      - key: FLAG
+        sync: false
+      - key: USERHOST_URL
+        sync: false
+      - key: UPLOAD_SECRET
+        sync: false
+      - key: BOT_TRIGGER_URL
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+
+  - type: web
+    name: xsleaks-userhost
+    runtime: docker
+    dockerfilePath: ./userhost/Dockerfile
+    envVars:
+      - key: UPLOAD_SECRET
+        sync: false
+
+  - type: web
+    name: xsleaks-bot
+    runtime: docker
+    dockerfilePath: ./bot/Dockerfile
+    envVars:
+      - key: SHOWCASE_URL
+        sync: false
+      - key: ADMIN_PASS
+        sync: false
+      - key: BOT_TIMEOUT_MS
+        value: "90000"

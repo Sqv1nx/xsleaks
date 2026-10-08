@@ -6,13 +6,11 @@ const fs = require('fs');
 
 const PORT = process.env.PORT || 9001;
 const UPLOADS_DIR = path.join(__dirname, 'uploads');
-const UPLOAD_SECRET = process.env.UPLOAD_SECRET || '';
-
-fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 
 const app = express();
 
 app.use(function (req, res, next) {
+  console.log('[userhost] ' + req.method + ' ' + req.url + ' host=' + req.hostname);
   res.set('X-Content-Type-Options', 'nosniff');
   next();
 });
@@ -21,24 +19,21 @@ app.get('/health', function (req, res) {
   res.json({ ok: true });
 });
 
-app.post('/internal/upload/:id', express.text({ type: '*/*', limit: '1mb' }), function (req, res) {
-  const auth = req.get('X-Upload-Token') || '';
-  if (!UPLOAD_SECRET || auth !== UPLOAD_SECRET) {
-    return res.status(403).send('Forbidden');
-  }
-  const id = req.params.id;
-  if (!id || id.includes('/') || id.includes('..')) return res.status(400).send('bad id');
-  const dir = path.join(UPLOADS_DIR, id);
-  fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), req.body || '');
-  res.end('ok');
-});
-
 app.get('/:id/index.html', function (req, res) {
   const id = req.params.id;
-  if (!id || id.includes('/') || id.includes('..')) return res.status(400).send('bad id');
+  console.log('[userhost] id param = ' + JSON.stringify(id));
+
+  // lenient: only block traversal
+  if (!id || id.includes('/') || id.includes('..')) {
+    return res.status(400).send('bad id');
+  }
+
   const file = path.join(UPLOADS_DIR, id, 'index.html');
-  if (!fs.existsSync(file)) return res.status(404).send('not found');
+  if (!fs.existsSync(file)) {
+    console.log('[userhost] file missing: ' + file);
+    return res.status(404).send('not found');
+  }
+
   res.set('Content-Type', 'text/html; charset=utf-8');
   res.set('Cache-Control', 'no-store');
   res.send(fs.readFileSync(file, 'utf8'));

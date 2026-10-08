@@ -1,20 +1,24 @@
-FROM ghcr.io/puppeteer/puppeteer:22.10.0
+FROM node:20-slim
 
-USER root
+RUN apt-get update && apt-get install -y \
+    chromium \
+    fonts-ipafont-gothic \
+    fonts-wqy-zenhei \
+    fonts-thai-tlwg \
+    fonts-kacst \
+    fonts-freefont-ttf \
+    --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+
 WORKDIR /app
 COPY package.json ./
 RUN npm install --omit=dev
-
-# install Chrome into pptruser's cache so puppeteer finds it at runtime
-USER pptruser
-RUN npx puppeteer browsers install chrome
-
-USER root
 COPY bot.js ./
 
 ENV NODE_ENV=production
-ENV PORT=9999
-EXPOSE 9999
-
-USER pptruser
+ENV PORT=10000
+EXPOSE 10000
 CMD ["node", "bot.js"]

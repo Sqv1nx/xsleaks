@@ -15,12 +15,15 @@ const FLAG           = process.env.FLAG   || ('FLAG{' + ADMIN_PASSWORD + '}');
 
 if (ADMIN_PASSWORD.length !== 23) {
   console.warn('[!] SECRET length = ' + ADMIN_PASSWORD.length + ', expected 23');
+} else {
+  console.log('[showcase] SECRET length OK (23)');
+}
+if (FLAG !== 'FLAG{' + ADMIN_PASSWORD + '}') {
+  console.warn('[!] FLAG does not match FLAG{SECRET} shape');
 }
 
-const USERHOST_URL    = process.env.USERHOST_URL  || '';
-const UPLOAD_SECRET   = process.env.UPLOAD_SECRET || '';
-const BOT_TRIGGER_URL = process.env.BOT_TRIGGER_URL || '';
-const COOKIE_DOMAIN   = process.env.COOKIE_DOMAIN || undefined;
+const USERHOST_URL = process.env.USERHOST_URL || 'http://localhost:9001';
+const COOKIE_DOMAIN = process.env.COOKIE_DOMAIN || undefined;
 
 const SHARED_DIR  = path.join(__dirname, 'shared');
 const UPLOADS_DIR = path.join(SHARED_DIR, 'uploads');
@@ -35,20 +38,7 @@ app.set('trust proxy', 1);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(session({
-  name: 'showcase.sid',
-  secret: process.env.SESSION_SECRET || 'rigged-showcase-secret',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    httpOnly: true,
-    sameSite: 'none',
-    secure: true,
-    domain: COOKIE_DOMAIN,
-    maxAge: 3600 * 1000
-  }
-}));
-
+// Allow the player's uploaded HTML (served from userhost) to POST reports back.
 app.use((req, res, next) => {
   res.set('Access-Control-Allow-Origin', '*');
   res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -56,6 +46,20 @@ app.use((req, res, next) => {
   if (req.method === 'OPTIONS') return res.sendStatus(204);
   next();
 });
+
+app.use(session({
+  name: 'showcase.sid',
+  secret: 'rigged-showcase-secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    sameSite: 'lax',
+    secure: false,
+    domain: COOKIE_DOMAIN,
+    maxAge: 3600 * 1000
+  }
+}));
 
 app.use(express.static(PUBLIC_DIR, { index: false }));
 
@@ -89,40 +93,23 @@ app.post('/login', (req, res) => {
 
 app.get('/admin', (req, res) => {
   if (req.session.user !== ADMIN_USER) return res.status(403).send('Forbidden');
-  res.send('Admin panel.');
+  res.send('Admin panel. Use /result/:id?password=...');
 });
 
 app.post('/upload', upload.single('html'), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'no file' });
   const id = uuid();
-  const html = req.file.buffer.toString('utf8');
-
   fs.mkdirSync(path.join(UPLOADS_DIR, id), { recursive: true });
-  fs.writeFileSync(path.join(UPLOADS_DIR, id, 'index.html'), html);
+  fs.writeFileSync(path.join(UPLOADS_DIR, id, 'index.html'), req.file.buffer);
   fs.writeFileSync(path.join(REPORTS_DIR, id + '.json'), JSON.stringify({ output: [] }));
 
-  if (USERHOST_URL && UPLOAD_SECRET) {
-    try {
-      await fetch(USERHOST_URL + '/internal/upload/' + id, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'text/html',
-          'X-Upload-Token': UPLOAD_SECRET
-        },
-        body: html
-      });
-    } catch (err) {
-      console.error('[showcase] push to userhost failed:', err.message);
-    }
-  }
-
-  if (BOT_TRIGGER_URL) {
-    fetch(BOT_TRIGGER_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id, url: USERHOST_URL + '/' + id + '/index.html' })
-    }).catch(err => console.error('[showcase] bot trigger failed:', err.message));
-  }
+  await new Promise(r => setTimeout(r, 800));
+  const trigger = process.env.BOT_TRIGGER_URL || 'http://bot:9999/run';
+  fetch(trigger, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id, url: USERHOST_URL + '/' + id + '/index.html' })
+  }).catch(err => console.error('[showcase] bot trigger:', err.message));
 
   res.json({ id });
 });
@@ -134,12 +121,17 @@ app.get('/run/:id', (req, res) => {
 app.get('/api/result/:id', (req, res) => {
   const file = path.join(REPORTS_DIR, req.params.id + '.json');
   if (!fs.existsSync(file)) return res.status(404).json({ error: 'not found' });
-  try { res.json(JSON.parse(fs.readFileSync(file, 'utf8'))); }
-  catch (e) { res.status(500).json({ error: 'bad report' }); }
+  try {
+    res.json(JSON.parse(fs.readFileSync(file, 'utf8')));
+  } catch (e) {
+    res.status(500).json({ error: 'bad report' });
+  }
 });
 
 app.get('/result/:id', (req, res) => {
-  if (req.session.user !== ADMIN_USER) return res.status(403).send('Forbidden');
+  if (req.session.user !== ADMIN_USER) {
+    return res.status(403).send('Forbidden');
+  }
   const guess = String(req.query.password || '');
   let matched = 0;
   for (let i = 0; i < ADMIN_PASSWORD.length; i++) {
@@ -156,22 +148,36 @@ app.get('/result/:id', (req, res) => {
   res.send('<!doctype html><html><body>' + iframes + '</body></html>');
 });
 
-const REPORT_WINDOW_MS = 10 * 60 * 1000;
-const REPORT_MAX = 200;
+
+// ---------------------------------------------------------------------------
+// /report/:id — the player's uploaded HTML calls this to send back findings.
+// Guarded by a time window and a per-submission cap; no token, because the
+// player's page runs cross-origin and cannot send custom headers.
+// ---------------------------------------------------------------------------
+const REPORT_WINDOW_MS = 10 * 60 * 1000;   // accept reports within 10 minutes
+const REPORT_MAX       = 200;              // cap reports per submission
 
 app.post('/report/:id', express.text({ type: '*/*', limit: '16kb' }), (req, res) => {
   const file = path.join(REPORTS_DIR, req.params.id + '.json');
   if (!fs.existsSync(file)) return res.status(404).end();
+
   let data;
   try { data = JSON.parse(fs.readFileSync(file, 'utf8')); }
   catch (e) { data = { output: [] }; }
+
   if (!data.createdAt) {
     try { data.createdAt = fs.statSync(file).mtimeMs; }
     catch (e) { data.createdAt = Date.now(); }
   }
-  if (Date.now() - data.createdAt > REPORT_WINDOW_MS) return res.status(410).send('Too late');
+  if (Date.now() - data.createdAt > REPORT_WINDOW_MS) {
+    return res.status(410).send('Too late');
+  }
+
   if (!Array.isArray(data.output)) data.output = [];
-  if (data.output.length >= REPORT_MAX) return res.status(429).send('Too many');
+  if (data.output.length >= REPORT_MAX) {
+    return res.status(429).send('Too many');
+  }
+
   const body = typeof req.body === 'string' ? req.body : JSON.stringify(req.body);
   if (body) data.output.push(body);
   fs.writeFileSync(file, JSON.stringify(data));

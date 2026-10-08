@@ -3,7 +3,7 @@
 const express = require('express');
 const puppeteer = require('puppeteer');
 
-const PORT           = process.env.PORT || 9999;
+const PORT           = process.env.PORT || 10000;
 const SHOWCASE_URL   = process.env.SHOWCASE_URL || 'http://localhost:9000';
 const ADMIN_USER     = 'admin';
 const ADMIN_PASS     = process.env.ADMIN_PASS || 'xxxxxxxxxxxxxxxxxxxxxxx';
@@ -42,19 +42,18 @@ app.listen(PORT, '0.0.0.0', function () {
 async function runBot(id, attackerUrl) {
   const browser = await puppeteer.launch({
     headless: 'new',
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
       '--disable-dev-shm-usage',
       '--disable-gpu',
-      '--disable-features=SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure',
-      '--host-resolver-rules=MAP localhost host.docker.internal'
+      '--disable-features=SameSiteByDefaultCookies,CookiesWithoutSameSiteMustBeSecure'
     ]
   });
 
   try {
     const page = await browser.newPage();
-
     await page.goto(SHOWCASE_URL + '/login', { waitUntil: 'domcontentloaded' });
     await page.type('input[name=username]', ADMIN_USER);
     await page.type('input[name=password]', ADMIN_PASS);
