@@ -14,9 +14,9 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 
 WORKDIR /app
-COPY package.json ./
+COPY bot/package.json ./
 RUN npm install --omit=dev
-COPY bot.js ./
+COPY bot/bot.js ./
 
 ENV NODE_ENV=production
 ENV PORT=10000
