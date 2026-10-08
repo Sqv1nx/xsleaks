@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Developer Showcase</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="wrap">
+  <div class="brand"><span class="dot"></span><span>Global Developer Showcase</span></div>
+
+  <h1>Your work deserves<br>to be seen.</h1>
+
+  <p class="lede">
+    Every year, the world's sharpest web developers submit their finest projects
+    to the Global Developer Showcase. The Head Judge reviews each submission
+    personally — automatically, and without mercy.
+    Upload your project as a single <code>.html</code> file. The Judge will visit it
+    shortly after you submit.
+  </p>
+
+  <section class="card">
+    <form id="upload-form">
+      <label class="dropzone" id="dropzone" for="file">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#cfe9ff" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 16V4"/><path d="M6 10l6-6 6 6"/><path d="M4 20h16"/>
+          </svg>
+        </div>
+        <div><strong>Drop your .html file here</strong></div>
+        <div class="hint">or click to browse · single file · 1 MB max</div>
+        <div class="file" id="file-label"></div>
+      </label>
+      <input type="file" id="file" name="html" accept=".html,text/html">
+
+      <button class="btn" type="submit" id="submit-btn" disabled>
+        Submit to the Head Judge
+      </button>
+
+      <div class="status" id="status"></div>
+    </form>
+  </section>
+
+  <p class="foot">Global Developer Showcase · judged fairly*&nbsp;&nbsp;(*allegedly)</p>
+</main>
+
+<script>
+var dropzone  = document.getElementById('dropzone');
+var fileInput = document.getElementById('file');
+var fileLabel = document.getElementById('file-label');
+var submitBtn = document.getElementById('submit-btn');
+var statusEl  = document.getElementById('status');
+var form      = document.getElementById('upload-form');
+var chosenFile = null;
+
+function setFile(f) {
+  if (!f) return;
+  if (!/\.html?$/i.test(f.name)) {
+    statusEl.textContent = 'Only .html files are accepted.';
+    statusEl.className = 'status err';
+    return;
+  }
+  chosenFile = f;
+  fileLabel.textContent = f.name + ' · ' + (f.size / 1024).toFixed(1) + ' KB';
+  submitBtn.disabled = false;
+  statusEl.textContent = '';
+  statusEl.className = 'status';
+}
+
+fileInput.addEventListener('change', function (e) { setFile(e.target.files[0]); });
+
+['dragenter','dragover'].forEach(function (ev) {
+  dropzone.addEventListener(ev, function (e) {
+    e.preventDefault(); dropzone.classList.add('drag');
+  });
+});
+['dragleave','drop'].forEach(function (ev) {
+  dropzone.addEventListener(ev, function (e) {
+    e.preventDefault(); dropzone.classList.remove('drag');
+  });
+});
+dropzone.addEventListener('drop', function (e) {
+  setFile(e.dataTransfer.files[0]);
+});
+
+form.addEventListener('submit', async function (e) {
+  e.preventDefault();
+  if (!chosenFile) return;
+  submitBtn.disabled = true;
+  statusEl.textContent = 'Uploading…';
+  statusEl.className = 'status';
+
+  var fd = new FormData();
+  fd.append('html', chosenFile);
+
+  try {
+    var r = await fetch('/upload', { method: 'POST', body: fd });
+    var j = await r.json();
+    if (!r.ok) throw new Error(j.error || 'Upload failed');
+    window.location.href = '/run/' + encodeURIComponent(j.id);
+  } catch (err) {
+    statusEl.textContent = err.message;
+    statusEl.className = 'status err';
+    submitBtn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>

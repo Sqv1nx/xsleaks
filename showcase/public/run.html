@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Developer Showcase · Judging</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="wrap">
+  <div class="brand"><span class="dot"></span><span>Global Developer Showcase · Judging</span></div>
+
+  <h1 id="headline">The Head Judge<br>is reviewing your work.</h1>
+  <p class="lede" id="subhead">
+    Sit tight. The Judge opens your project in a private, authenticated browser,
+    runs your scripts exactly as written, and reports back what happened.
+    This usually takes a few minutes.
+  </p>
+
+  <section class="card" id="countdown-card">
+    <div class="ring-wrap">
+      <div class="ring" id="ring" style="--p:0">
+        <div style="text-align:center">
+          <div class="time" id="time">5:00</div>
+          <div class="label">remaining</div>
+        </div>
+      </div>
+    </div>
+    <div class="status" id="status" style="text-align:center">
+      Your submission is queued for review.
+    </div>
+  </section>
+
+  <section class="card hidden" id="result-card">
+    <div id="result-inner"></div>
+  </section>
+
+  <p class="foot">Global Developer Showcase · judged fairly*&nbsp;&nbsp;(*allegedly)</p>
+</main>
+
+<script>
+var id = location.pathname.split('/').pop();
+var TOTAL_MS = 5 * 60 * 1000;
+var start = Date.now();
+var finished = false;
+
+var ring     = document.getElementById('ring');
+var timeEl   = document.getElementById('time');
+var cdCard   = document.getElementById('countdown-card');
+var resCard  = document.getElementById('result-card');
+var resInner = document.getElementById('result-inner');
+var headline = document.getElementById('headline');
+var subhead  = document.getElementById('subhead');
+
+function fmt(ms) {
+  var s = Math.max(0, Math.ceil(ms / 1000));
+  return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+}
+
+var tickTimer = setInterval(function () {
+  var remain = Math.max(0, TOTAL_MS - (Date.now() - start));
+  ring.style.setProperty('--p', (1 - remain / TOTAL_MS).toFixed(4));
+  timeEl.textContent = fmt(remain);
+  if (remain <= 0 && !finished) finish();
+}, 250);
+
+var pollTimer = setInterval(async function () {
+  if (finished) return;
+  try {
+    var r = await fetch('/api/result/' + encodeURIComponent(id));
+    if (r.ok) {
+      var j = await r.json();
+      if (Array.isArray(j.output) && j.output.length > 0) {
+        showResult(j);
+      }
+    }
+  } catch (e) {}
+}, 3000);
+
+async function finish() {
+  if (finished) return;
+  finished = true;
+  clearInterval(tickTimer);
+  clearInterval(pollTimer);
+  try {
+    var r = await fetch('/api/result/' + encodeURIComponent(id));
+    var j = r.ok ? await r.json() : { output: [] };
+    showResult(j);
+  } catch (e) { showResult({ output: [] }); }
+}
+
+function showResult(j) {
+  headline.textContent = 'The Judge has returned.';
+  subhead.textContent = 'Below is everything your project produced inside the Judge\u2019s authenticated browser.';
+  cdCard.classList.add('hidden');
+  resCard.classList.remove('hidden');
+  resCard.classList.add('reveal');
+
+  var out = Array.isArray(j.output) ? j.output : [];
+  var body = out.length ? out.join('\n') : '(no output was reported)';
+
+  resInner.innerHTML =
+    '<div class="term">' +
+      '<div class="bar">' +
+        '<span class="b r"></span><span class="b y"></span><span class="b g"></span>' +
+        '<span style="margin-left:8px">judge-output — ' + id.slice(0, 8) + '</span>' +
+      '</div>' +
+      '<div class="body"></div>' +
+    '</div>';
+  resInner.querySelector('.body').textContent = body;
+}
+</script>
+</body>
+</html>

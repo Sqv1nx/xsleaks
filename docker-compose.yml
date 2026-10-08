@@ -1,0 +1,48 @@
+
+services:
+  showcase:
+    build: ./showcase
+    container_name: rigged-showcase
+    environment:
+      SECRET: ${SECRET}
+      FLAG: ${FLAG}
+      BOT_TOKEN: ${BOT_TOKEN}
+      PORT: 9000
+      USERHOST_URL: http://localhost:9001
+      BOT_TRIGGER_URL: http://bot:9999/run
+      COOKIE_DOMAIN: localhost
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./showcase/shared:/app/shared
+    networks: [showcase-net]
+
+  userhost:
+    build: ./userhost
+    container_name: rigged-userhost
+    environment:
+      PORT: 9001
+    ports:
+      - "9001:9001"
+    volumes:
+      - ./showcase/shared/uploads:/app/uploads:ro
+    networks: [showcase-net]
+
+  bot:
+    build: ./bot
+    container_name: rigged-bot
+    environment:
+      PORT: 9999
+      SHOWCASE_URL: http://localhost:9000
+      USERHOST_URL: http://localhost:9001
+      ADMIN_PASS: ${SECRET}
+      BOT_TOKEN: ${BOT_TOKEN}
+      BOT_TIMEOUT_MS: ${BOT_TIMEOUT_MS}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on: [showcase, userhost]
+    networks: [showcase-net]
+
+networks:
+  showcase-net:
+    driver: bridge

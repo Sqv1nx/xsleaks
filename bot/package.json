@@ -1,0 +1,11 @@
+{
+  "name": "rigged-bot",
+  "version": "1.0.0",
+  "private": true,
+  "main": "bot.js",
+  "scripts": { "start": "node bot.js" },
+  "dependencies": {
+    "express": "^4.19.2",
+    "puppeteer": "^22.10.0"
+  }
+}
