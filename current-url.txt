@@ -1,1 +1,1 @@
-https://respective-kong-alumni-provision.trycloudflare.com
+https://api.trycloudflare.com
