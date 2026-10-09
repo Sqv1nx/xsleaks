@@ -40,6 +40,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'rigged-showcase-secret',
   resave: false,
   saveUninitialized: false,
+  porxy:true,
   cookie: {
     httpOnly: true,
     sameSite: 'none',
