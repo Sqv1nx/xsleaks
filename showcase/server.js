@@ -103,7 +103,7 @@ app.post('/upload', upload.single('html'), async (req, res) => {
 
   if (USERHOST_URL && UPLOAD_SECRET) {
     try {
-      await fetch(USERHOST_URL + '/internal/upload/' + id, {
+      const r = await fetch(USERHOST_URL + '/internal/upload/' + id, {
         method: 'POST',
         headers: {
           'Content-Type': 'text/html',
@@ -111,9 +111,12 @@ app.post('/upload', upload.single('html'), async (req, res) => {
         },
         body: html
       });
+      console.log('[showcase] push to userhost status=' + r.status + ' id=' + id);
     } catch (err) {
       console.error('[showcase] push to userhost failed:', err.message);
     }
+  } else {
+    console.error('[showcase] USERHOST_URL or UPLOAD_SECRET missing');
   }
 
   if (BOT_TRIGGER_URL) {
