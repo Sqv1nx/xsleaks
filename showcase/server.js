@@ -102,9 +102,9 @@ app.post('/upload', upload.single('html'), async (req, res) => {
   fs.writeFileSync(path.join(UPLOADS_DIR, id, 'index.html'), html);
   fs.writeFileSync(path.join(REPORTS_DIR, id + '.json'), JSON.stringify({ output: [] }));
 
-  if (USERHOST_URL && UPLOAD_SECRET) {
+    if (USERHOST_URL && UPLOAD_SECRET) {
     try {
-      const r = await fetch(USERHOST_URL + '/internal/upload/' + id, {
+      await fetch(USERHOST_URL + '/internal/upload/' + id, {
         method: 'POST',
         headers: {
           'Content-Type': 'text/html',
@@ -112,12 +112,20 @@ app.post('/upload', upload.single('html'), async (req, res) => {
         },
         body: html
       });
-      console.log('[showcase] push to userhost status=' + r.status + ' id=' + id);
+
+      // wait for userhost to actually be able to serve the file
+      let ready = false;
+      for (let i = 0; i < 30; i++) {
+        try {
+          const check = await fetch(USERHOST_URL + '/' + id + '/index.html', { method: 'GET' });
+          if (check.status === 200) { ready = true; break; }
+        } catch (e) { /* still cold */ }
+        await new Promise(r => setTimeout(r, 1000));
+      }
+      console.log('[showcase] userhost ready=' + ready + ' id=' + id);
     } catch (err) {
-      console.error('[showcase] push to userhost failed:', err.message);
+      console.error('[showcase] push failed:', err.message);
     }
-  } else {
-    console.error('[showcase] USERHOST_URL or UPLOAD_SECRET missing');
   }
 
   if (BOT_TRIGGER_URL) {
