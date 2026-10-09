@@ -1,11 +1,11 @@
 FROM node:20-alpine
 WORKDIR /app
-COPY package.json ./
+COPY showcase/package.json ./
 RUN npm install --omit=dev
-COPY server.js ./
-COPY public ./public
+COPY showcase/server.js ./
+COPY showcase/public ./public
 RUN mkdir -p /app/shared/uploads /app/shared/reports
 ENV NODE_ENV=production
-ENV PORT=9000
-EXPOSE 9000
+ENV PORT=10000
+EXPOSE 10000
 CMD ["node", "server.js"]
