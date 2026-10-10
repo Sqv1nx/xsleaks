@@ -1,1 +1,1 @@
-https://myers-arrived-occurring-dish.trycloudflare.com
+https://api.trycloudflare.com
