@@ -1,1 +1,1 @@
-https://hockey-beautifully-wildlife-zoning.trycloudflare.com
+https://api.trycloudflare.com
