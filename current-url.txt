@@ -1,1 +1,1 @@
-https://scientist-nascar-monsters-pads.trycloudflare.com
+https://api.trycloudflare.com
