@@ -1,1 +1,1 @@
-https://cabinet-interviews-recordings-masters.trycloudflare.com
+https://api.trycloudflare.com
