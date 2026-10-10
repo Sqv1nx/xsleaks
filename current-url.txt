@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://projection-southeast-beam-climate.trycloudflare.com
