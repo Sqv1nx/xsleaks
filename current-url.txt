@@ -1,1 +1,1 @@
-https://motors-discussions-vaccine-pan.trycloudflare.com
+https://api.trycloudflare.com
