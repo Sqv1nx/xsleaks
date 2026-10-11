@@ -1,1 +1,1 @@
-https://tribute-firms-vid-empire.trycloudflare.com
+https://api.trycloudflare.com
