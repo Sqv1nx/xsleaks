@@ -1,1 +1,1 @@
-https://achievement-goals-nil-jewellery.trycloudflare.com
+https://api.trycloudflare.com
