@@ -1,1 +1,1 @@
-https://kentucky-john-nec-distributions.trycloudflare.com
+https://api.trycloudflare.com
