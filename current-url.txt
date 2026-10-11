@@ -1,1 +1,1 @@
-https://measured-ferry-extraordinary-lower.trycloudflare.com
+https://api.trycloudflare.com
