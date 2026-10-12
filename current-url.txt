@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://basin-while-scales-health.trycloudflare.com
