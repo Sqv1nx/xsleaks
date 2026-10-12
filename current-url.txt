@@ -1,1 +1,1 @@
-https://portraits-temperatures-kind-gel.trycloudflare.com
+https://api.trycloudflare.com
