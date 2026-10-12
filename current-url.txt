@@ -1,1 +1,1 @@
-https://medicare-spam-hose-shipping.trycloudflare.com
+https://api.trycloudflare.com
