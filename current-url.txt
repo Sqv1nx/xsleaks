@@ -1,1 +1,1 @@
-https://lodge-murray-semiconductor-portrait.trycloudflare.com
+https://api.trycloudflare.com
