@@ -1,1 +1,1 @@
-https://generated-pierce-republic-inch.trycloudflare.com
+https://api.trycloudflare.com
