@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://instance-mental-residence-safer.trycloudflare.com
