@@ -1,1 +1,1 @@
-https://between-nuts-hawk-charter.trycloudflare.com
+https://api.trycloudflare.com
