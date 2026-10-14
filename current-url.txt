@@ -1,1 +1,1 @@
-https://competitors-actor-reflect-wishing.trycloudflare.com
+https://api.trycloudflare.com
