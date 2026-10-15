@@ -1,1 +1,1 @@
-https://explains-bristol-answer-falls.trycloudflare.com
+https://api.trycloudflare.com
