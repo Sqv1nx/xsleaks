@@ -1,1 +1,1 @@
-https://correct-told-finished-specialty.trycloudflare.com
+https://api.trycloudflare.com
