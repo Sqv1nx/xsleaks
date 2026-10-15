@@ -1,1 +1,1 @@
-https://forbes-modular-luis-cooking.trycloudflare.com
+https://api.trycloudflare.com
