@@ -1,1 +1,1 @@
-https://guaranteed-chamber-english-chris.trycloudflare.com
+https://api.trycloudflare.com
