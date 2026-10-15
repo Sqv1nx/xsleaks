@@ -1,1 +1,1 @@
-https://worlds-concentration-psychological-diving.trycloudflare.com
+https://api.trycloudflare.com
