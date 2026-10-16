@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://libraries-catalog-criticism-schema.trycloudflare.com
