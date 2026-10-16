@@ -1,1 +1,1 @@
-https://round-bridge-wealth-journalism.trycloudflare.com
+https://api.trycloudflare.com
