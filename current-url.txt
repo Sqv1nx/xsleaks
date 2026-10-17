@@ -1,1 +1,1 @@
-https://stockholm-completing-almost-contrary.trycloudflare.com
+https://api.trycloudflare.com
