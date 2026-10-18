@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://configured-costa-waves-purchases.trycloudflare.com
