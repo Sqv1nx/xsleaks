@@ -1,1 +1,1 @@
-https://universe-guitar-ethernet-madrid.trycloudflare.com
+https://api.trycloudflare.com
