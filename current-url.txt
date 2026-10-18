@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://recorded-ruling-even-benz.trycloudflare.com
