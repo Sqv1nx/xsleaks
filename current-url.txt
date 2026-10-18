@@ -1,1 +1,1 @@
-https://travel-eastern-heritage-star.trycloudflare.com
+https://api.trycloudflare.com
