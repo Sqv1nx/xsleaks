@@ -1,1 +1,1 @@
-https://microwave-reprint-integrate-edited.trycloudflare.com
+https://api.trycloudflare.com
