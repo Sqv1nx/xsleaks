@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://image-font-eastern-utilize.trycloudflare.com
