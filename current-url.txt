@@ -1,1 +1,1 @@
-https://pool-models-ver-commons.trycloudflare.com
+https://api.trycloudflare.com
