@@ -1,1 +1,1 @@
-https://strings-anyone-newer-isaac.trycloudflare.com
+https://api.trycloudflare.com
