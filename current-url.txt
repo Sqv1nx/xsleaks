@@ -1,1 +1,1 @@
-https://opposite-motorcycle-nirvana-void.trycloudflare.com
+https://api.trycloudflare.com
