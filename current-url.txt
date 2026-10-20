@@ -1,1 +1,1 @@
-https://eleven-timothy-sport-coast.trycloudflare.com
+https://api.trycloudflare.com
