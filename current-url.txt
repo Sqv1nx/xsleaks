@@ -1,1 +1,1 @@
-https://depending-breath-runner-reflections.trycloudflare.com
+https://api.trycloudflare.com
