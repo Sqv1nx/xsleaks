@@ -1,1 +1,1 @@
-https://pens-inspection-founded-alan.trycloudflare.com
+https://api.trycloudflare.com
