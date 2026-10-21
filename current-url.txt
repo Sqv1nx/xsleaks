@@ -1,1 +1,1 @@
-https://dvd-flat-immigration-initiative.trycloudflare.com
+https://api.trycloudflare.com
