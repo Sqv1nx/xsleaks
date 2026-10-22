@@ -1,1 +1,1 @@
-https://hist-taken-awesome-bald.trycloudflare.com
+https://api.trycloudflare.com
