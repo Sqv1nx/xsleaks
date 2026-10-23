@@ -1,1 +1,1 @@
-https://hour-arm-divide-poor.trycloudflare.com
+https://api.trycloudflare.com
