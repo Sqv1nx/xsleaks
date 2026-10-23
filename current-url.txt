@@ -1,1 +1,1 @@
-https://diego-accepts-organizational-gst.trycloudflare.com
+https://api.trycloudflare.com
