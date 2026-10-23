@@ -1,1 +1,1 @@
-https://proposition-blacks-sensors-subscribe.trycloudflare.com
+https://api.trycloudflare.com
