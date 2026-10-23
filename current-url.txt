@@ -1,1 +1,1 @@
-https://camping-creation-prevent-kid.trycloudflare.com
+https://api.trycloudflare.com
