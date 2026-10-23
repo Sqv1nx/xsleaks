@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://plate-proposals-wed-judgment.trycloudflare.com
