@@ -1,1 +1,1 @@
-https://stranger-anti-vegetables-eugene.trycloudflare.com
+https://api.trycloudflare.com
