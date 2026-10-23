@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://thumb-sci-vitamins-monitors.trycloudflare.com
