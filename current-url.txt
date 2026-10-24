@@ -1,1 +1,1 @@
-https://endif-holder-easier-engineer.trycloudflare.com
+https://api.trycloudflare.com
