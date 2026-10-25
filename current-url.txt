@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://lanka-std-roland-extensions.trycloudflare.com
