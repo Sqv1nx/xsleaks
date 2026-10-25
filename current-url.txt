@@ -1,1 +1,1 @@
-https://negotiation-eva-oakland-epa.trycloudflare.com
+https://api.trycloudflare.com
