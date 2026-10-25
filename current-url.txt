@@ -1,1 +1,1 @@
-https://reconstruction-productions-friend-ancient.trycloudflare.com
+https://api.trycloudflare.com
