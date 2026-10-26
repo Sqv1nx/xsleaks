@@ -1,1 +1,1 @@
-https://educated-laser-equation-alone.trycloudflare.com
+https://api.trycloudflare.com
