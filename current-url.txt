@@ -1,1 +1,1 @@
-https://pas-pleasant-odds-manhattan.trycloudflare.com
+https://api.trycloudflare.com
