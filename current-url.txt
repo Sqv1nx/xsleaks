@@ -1,1 +1,1 @@
-https://electricity-cold-dvds-roommates.trycloudflare.com
+https://api.trycloudflare.com
