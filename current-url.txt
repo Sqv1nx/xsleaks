@@ -1,1 +1,1 @@
-https://sample-sensor-viewers-satisfactory.trycloudflare.com
+https://api.trycloudflare.com
