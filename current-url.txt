@@ -1,1 +1,1 @@
-https://mar-mortgages-pounds-ing.trycloudflare.com
+https://api.trycloudflare.com
