@@ -1,1 +1,1 @@
-https://heather-stick-fruits-what.trycloudflare.com
+https://api.trycloudflare.com
