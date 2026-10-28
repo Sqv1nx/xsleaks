@@ -1,1 +1,1 @@
-https://bought-proprietary-too-object.trycloudflare.com
+https://api.trycloudflare.com
