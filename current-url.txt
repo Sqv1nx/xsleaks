@@ -1,1 +1,1 @@
-https://begin-render-consequences-drives.trycloudflare.com
+https://api.trycloudflare.com
