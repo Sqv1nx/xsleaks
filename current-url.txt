@@ -1,1 +1,1 @@
-https://hero-fifteen-fixtures-collectors.trycloudflare.com
+https://api.trycloudflare.com
