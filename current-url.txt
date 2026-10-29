@@ -1,1 +1,1 @@
-https://pavilion-wait-spine-base.trycloudflare.com
+https://api.trycloudflare.com
