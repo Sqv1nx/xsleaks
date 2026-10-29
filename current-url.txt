@@ -1,1 +1,1 @@
-https://donald-gallery-cathedral-covers.trycloudflare.com
+https://api.trycloudflare.com
