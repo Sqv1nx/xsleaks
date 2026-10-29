@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://exercises-characterized-graphical-terms.trycloudflare.com
