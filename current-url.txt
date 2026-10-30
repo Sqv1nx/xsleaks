@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://nightlife-thinking-fever-outputs.trycloudflare.com
