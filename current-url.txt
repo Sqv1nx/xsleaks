@@ -1,1 +1,1 @@
-https://organizing-ireland-dts-clan.trycloudflare.com
+https://api.trycloudflare.com
