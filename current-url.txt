@@ -1,1 +1,1 @@
-https://pilot-objectives-degrees-sewing.trycloudflare.com
+https://api.trycloudflare.com
