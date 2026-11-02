@@ -1,1 +1,1 @@
-https://piece-recruiting-distinct-server.trycloudflare.com
+https://api.trycloudflare.com
