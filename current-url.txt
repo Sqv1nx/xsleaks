@@ -1,1 +1,1 @@
-https://disabilities-variable-chargers-deck.trycloudflare.com
+https://api.trycloudflare.com
