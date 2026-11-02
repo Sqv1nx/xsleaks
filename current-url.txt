@@ -1,1 +1,1 @@
-https://rosa-breakdown-viking-updated.trycloudflare.com
+https://api.trycloudflare.com
