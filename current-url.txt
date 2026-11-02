@@ -1,1 +1,1 @@
-https://stephen-europe-turtle-intranet.trycloudflare.com
+https://api.trycloudflare.com
