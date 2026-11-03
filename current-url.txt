@@ -1,1 +1,1 @@
-https://gods-appliances-send-pmc.trycloudflare.com
+https://api.trycloudflare.com
