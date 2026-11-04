@@ -1,1 +1,1 @@
-https://sail-contribution-ben-verbal.trycloudflare.com
+https://api.trycloudflare.com
