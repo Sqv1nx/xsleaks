@@ -1,1 +1,1 @@
-https://latter-tracker-northwest-exposed.trycloudflare.com
+https://api.trycloudflare.com
