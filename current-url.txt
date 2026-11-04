@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://coordination-hamburg-hotel-aluminum.trycloudflare.com
