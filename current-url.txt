@@ -1,1 +1,1 @@
-https://venture-wildlife-physician-fog.trycloudflare.com
+https://api.trycloudflare.com
