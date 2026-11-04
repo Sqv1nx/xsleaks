@@ -1,1 +1,1 @@
-https://different-rugs-under-allan.trycloudflare.com
+https://api.trycloudflare.com
