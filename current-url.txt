@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://models-angela-friday-fisher.trycloudflare.com
