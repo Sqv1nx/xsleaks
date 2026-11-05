@@ -1,1 +1,1 @@
-https://optional-principal-authentication-tea.trycloudflare.com
+https://api.trycloudflare.com
