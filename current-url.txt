@@ -1,1 +1,1 @@
-https://responsible-airlines-humanitarian-patterns.trycloudflare.com
+https://api.trycloudflare.com
