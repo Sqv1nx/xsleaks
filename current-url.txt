@@ -1,1 +1,1 @@
-https://vienna-prot-eddie-impossible.trycloudflare.com
+https://api.trycloudflare.com
