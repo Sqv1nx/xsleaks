@@ -1,1 +1,1 @@
-https://devon-thy-successfully-zones.trycloudflare.com
+https://api.trycloudflare.com
