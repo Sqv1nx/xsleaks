@@ -1,1 +1,1 @@
-https://pictures-engine-steam-orange.trycloudflare.com
+https://api.trycloudflare.com
