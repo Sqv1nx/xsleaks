@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://tunnel-cambridge-workforce-nsw.trycloudflare.com
