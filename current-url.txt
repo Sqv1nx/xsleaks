@@ -1,1 +1,1 @@
-https://precise-expanded-hygiene-stamp.trycloudflare.com
+https://api.trycloudflare.com
