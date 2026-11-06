@@ -1,1 +1,1 @@
-https://title-bluetooth-airport-shark.trycloudflare.com
+https://api.trycloudflare.com
