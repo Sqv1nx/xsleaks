@@ -1,1 +1,1 @@
-https://reconstruction-toe-matt-leaders.trycloudflare.com
+https://api.trycloudflare.com
