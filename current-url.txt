@@ -1,1 +1,1 @@
-https://airlines-spectacular-middle-screenshots.trycloudflare.com
+https://api.trycloudflare.com
