@@ -1,1 +1,1 @@
-https://britney-measurement-restructuring-freight.trycloudflare.com
+https://api.trycloudflare.com
