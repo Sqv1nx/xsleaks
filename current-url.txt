@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://statistical-region-lung-skin.trycloudflare.com
