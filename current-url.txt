@@ -1,1 +1,1 @@
-https://pumps-grants-charlie-exchanges.trycloudflare.com
+https://api.trycloudflare.com
