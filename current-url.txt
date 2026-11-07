@@ -1,1 +1,1 @@
-https://physicians-morning-rated-around.trycloudflare.com
+https://api.trycloudflare.com
