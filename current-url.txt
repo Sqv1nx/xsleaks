@@ -1,1 +1,1 @@
-https://petite-rest-showcase-sep.trycloudflare.com
+https://api.trycloudflare.com
