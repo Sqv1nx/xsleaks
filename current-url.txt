@@ -1,1 +1,1 @@
-https://materials-reservation-facilities-guards.trycloudflare.com
+https://api.trycloudflare.com
