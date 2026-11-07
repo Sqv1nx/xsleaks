@@ -1,1 +1,1 @@
-https://ordinary-harder-donate-eric.trycloudflare.com
+https://api.trycloudflare.com
