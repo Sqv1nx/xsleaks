@@ -1,1 +1,1 @@
-https://suite-mode-inherited-symphony.trycloudflare.com
+https://api.trycloudflare.com
