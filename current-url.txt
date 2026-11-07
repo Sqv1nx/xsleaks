@@ -1,1 +1,1 @@
-https://charger-vast-delhi-dpi.trycloudflare.com
+https://api.trycloudflare.com
