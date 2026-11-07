@@ -1,1 +1,1 @@
-https://panels-ethics-shorts-ozone.trycloudflare.com
+https://api.trycloudflare.com
