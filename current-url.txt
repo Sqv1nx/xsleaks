@@ -1,1 +1,1 @@
-https://least-writings-hong-template.trycloudflare.com
+https://api.trycloudflare.com
