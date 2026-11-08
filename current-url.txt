@@ -1,1 +1,1 @@
-https://exists-syndication-tribes-mediterranean.trycloudflare.com
+https://api.trycloudflare.com
