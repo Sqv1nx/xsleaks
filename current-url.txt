@@ -1,1 +1,1 @@
-https://along-polls-landing-smaller.trycloudflare.com
+https://api.trycloudflare.com
