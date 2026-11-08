@@ -1,1 +1,1 @@
-https://adaptation-powder-resumes-sections.trycloudflare.com
+https://api.trycloudflare.com
