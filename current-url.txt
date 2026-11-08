@@ -1,1 +1,1 @@
-https://nose-strengthen-triumph-insider.trycloudflare.com
+https://api.trycloudflare.com
