@@ -1,1 +1,1 @@
-https://adoption-rooms-hist-angeles.trycloudflare.com
+https://api.trycloudflare.com
