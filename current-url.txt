@@ -1,1 +1,1 @@
-https://knitting-enjoy-noted-postage.trycloudflare.com
+https://api.trycloudflare.com
