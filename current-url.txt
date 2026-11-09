@@ -1,1 +1,1 @@
-https://amino-sends-personally-representatives.trycloudflare.com
+https://api.trycloudflare.com
