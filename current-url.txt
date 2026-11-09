@@ -1,1 +1,1 @@
-https://associates-immigration-mario-lone.trycloudflare.com
+https://api.trycloudflare.com
