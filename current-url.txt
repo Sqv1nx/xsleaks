@@ -1,1 +1,1 @@
-https://motorcycles-milton-santa-instrumental.trycloudflare.com
+https://api.trycloudflare.com
