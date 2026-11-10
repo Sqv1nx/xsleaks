@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://answering-period-stats-musical.trycloudflare.com
