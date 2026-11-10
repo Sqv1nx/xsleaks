@@ -1,1 +1,1 @@
-https://methods-anybody-sold-giant.trycloudflare.com
+https://api.trycloudflare.com
