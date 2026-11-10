@@ -1,1 +1,1 @@
-https://longer-collectibles-nowhere-second.trycloudflare.com
+https://api.trycloudflare.com
