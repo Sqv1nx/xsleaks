@@ -1,1 +1,1 @@
-https://witness-ears-analyzed-books.trycloudflare.com
+https://api.trycloudflare.com
