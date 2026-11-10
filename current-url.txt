@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://suspension-retention-hosts-joined.trycloudflare.com
