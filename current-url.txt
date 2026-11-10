@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://settings-resolutions-tells-sys.trycloudflare.com
