@@ -1,1 +1,1 @@
-https://wednesday-too-columbus-streaming.trycloudflare.com
+https://api.trycloudflare.com
