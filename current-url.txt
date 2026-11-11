@@ -1,1 +1,1 @@
-https://duo-zinc-expressed-answers.trycloudflare.com
+https://api.trycloudflare.com
