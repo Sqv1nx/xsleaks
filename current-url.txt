@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://cure-path-voters-std.trycloudflare.com
