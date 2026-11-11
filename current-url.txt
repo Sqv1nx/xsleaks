@@ -1,1 +1,1 @@
-https://spectrum-proposition-duck-personally.trycloudflare.com
+https://api.trycloudflare.com
