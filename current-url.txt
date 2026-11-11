@@ -1,1 +1,1 @@
-https://ones-hotel-neo-distant.trycloudflare.com
+https://api.trycloudflare.com
