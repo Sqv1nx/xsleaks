@@ -1,1 +1,1 @@
-https://knitting-elect-video-score.trycloudflare.com
+https://api.trycloudflare.com
