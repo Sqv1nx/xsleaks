@@ -1,1 +1,1 @@
-https://willing-brussels-britney-bibliographic.trycloudflare.com
+https://api.trycloudflare.com
