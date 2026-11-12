@@ -1,1 +1,1 @@
-https://greatest-trading-connect-forming.trycloudflare.com
+https://api.trycloudflare.com
