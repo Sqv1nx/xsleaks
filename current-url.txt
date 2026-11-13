@@ -1,1 +1,1 @@
-https://janet-brush-fundamental-mike.trycloudflare.com
+https://api.trycloudflare.com
