@@ -1,1 +1,1 @@
-https://undergraduate-pledge-usual-expensive.trycloudflare.com
+https://api.trycloudflare.com
