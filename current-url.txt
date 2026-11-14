@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://proposition-frontier-frequencies-storm.trycloudflare.com
