@@ -1,1 +1,1 @@
-https://probably-generate-donation-bugs.trycloudflare.com
+https://api.trycloudflare.com
