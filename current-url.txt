@@ -1,1 +1,1 @@
-https://frederick-pubs-scheme-categories.trycloudflare.com
+https://api.trycloudflare.com
