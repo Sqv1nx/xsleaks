@@ -1,1 +1,1 @@
-https://detailed-converted-bulletin-scientist.trycloudflare.com
+https://api.trycloudflare.com
