@@ -1,1 +1,1 @@
-https://flights-lightbox-ultra-brakes.trycloudflare.com
+https://api.trycloudflare.com
