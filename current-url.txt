@@ -1,1 +1,1 @@
-https://heritage-ping-tomato-dimensional.trycloudflare.com
+https://api.trycloudflare.com
