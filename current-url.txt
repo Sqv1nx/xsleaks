@@ -1,1 +1,1 @@
-https://mardi-anthropology-repair-right.trycloudflare.com
+https://api.trycloudflare.com
