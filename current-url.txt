@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://fall-desire-hourly-regulations.trycloudflare.com
