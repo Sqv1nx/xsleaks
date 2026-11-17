@@ -1,1 +1,1 @@
-https://inquiries-hardly-tracy-federal.trycloudflare.com
+https://api.trycloudflare.com
