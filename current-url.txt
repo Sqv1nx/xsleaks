@@ -1,1 +1,1 @@
-https://screen-wisdom-riders-salvador.trycloudflare.com
+https://api.trycloudflare.com
