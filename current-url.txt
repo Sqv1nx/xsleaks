@@ -1,1 +1,1 @@
-https://variance-aims-optimize-keys.trycloudflare.com
+https://api.trycloudflare.com
