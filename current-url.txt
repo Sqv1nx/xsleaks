@@ -1,1 +1,1 @@
-https://python-forty-depth-involve.trycloudflare.com
+https://api.trycloudflare.com
