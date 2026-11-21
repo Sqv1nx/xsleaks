@@ -1,1 +1,1 @@
-https://bacteria-start-hockey-restaurant.trycloudflare.com
+https://api.trycloudflare.com
