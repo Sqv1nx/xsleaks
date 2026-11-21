@@ -1,1 +1,1 @@
-https://cricket-spouse-semester-copyright.trycloudflare.com
+https://api.trycloudflare.com
