@@ -1,1 +1,1 @@
-https://subtle-pills-feature-herbs.trycloudflare.com
+https://api.trycloudflare.com
