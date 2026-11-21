@@ -1,1 +1,1 @@
-https://opponents-maintenance-clarity-realtors.trycloudflare.com
+https://api.trycloudflare.com
