@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://identify-graph-webshots-register.trycloudflare.com
