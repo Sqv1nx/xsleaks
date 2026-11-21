@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://arabia-collectables-deviation-outline.trycloudflare.com
