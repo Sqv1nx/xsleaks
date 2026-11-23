@@ -1,1 +1,1 @@
-https://helping-relations-adequate-referenced.trycloudflare.com
+https://api.trycloudflare.com
