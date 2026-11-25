@@ -1,1 +1,1 @@
-https://fountain-where-peterson-voluntary.trycloudflare.com
+https://api.trycloudflare.com
