@@ -1,1 +1,1 @@
-https://cindy-christine-commodities-rugby.trycloudflare.com
+https://api.trycloudflare.com
