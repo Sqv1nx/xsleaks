@@ -1,1 +1,1 @@
-https://api.trycloudflare.com
+https://griffin-licenses-funny-replies.trycloudflare.com
