@@ -1,1 +1,1 @@
-https://peripheral-hired-realtor-combat.trycloudflare.com
+https://api.trycloudflare.com
