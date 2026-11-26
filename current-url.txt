@@ -1,1 +1,1 @@
-https://looks-insertion-lion-immune.trycloudflare.com
+https://api.trycloudflare.com
