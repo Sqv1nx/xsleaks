@@ -1,1 +1,1 @@
-https://avenue-successfully-beginners-calculated.trycloudflare.com
+https://api.trycloudflare.com
