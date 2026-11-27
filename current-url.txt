@@ -1,1 +1,1 @@
-https://routes-southern-low-proposals.trycloudflare.com
+https://api.trycloudflare.com
